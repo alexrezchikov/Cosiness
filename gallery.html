@@ -9,7 +9,7 @@
   <body>
     <header>
       <a href="index.html" class="logo logo-img" aria-label="На главную">
-        <img src="images/сoffee_bean.png">
+        <img src="images/coffee_bean.png" alt="Логотип кафе Уют">
       </a>
       <nav>
         <a href="index.html">Главная</a>
@@ -47,22 +47,6 @@
       <p>Адрес: г. Москва, ул. Патриаршские пруды, д. 1 • Телефон: +7 (925) 119-90-15</p>
       <p>&copy; ООО "Мама Птица"</p>
     </footer>
-    <script>
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-      };
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, observerOptions);
-      document.querySelectorAll('.fade-in-up').forEach(el => {
-        observer.observe(el);
-      });
-    </script>
+    <script src="js/gallery.js"></script>
   </body>
 </html>

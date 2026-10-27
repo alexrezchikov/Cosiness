@@ -9,7 +9,7 @@
   <body>
     <header>
       <a href="index.html" class="logo logo-img" aria-label="На главную">
-        <img src="images/сoffee_bean.png">
+        <img src="images/coffee_bean.png">
       </a>
       <nav>
         <a href="index.html" class="active">Главная</a>
@@ -21,6 +21,7 @@
         <a href="profile.html">Профиль</a>
       </nav>
     </header>
+
     <main>
       <section class="hero fade-in-up">
         <h1>Тепло, вкус и уют в каждом глотке</h1>
@@ -30,32 +31,34 @@
         </p>
         <a href="menu.html">Выбрать любимое блюдо</a>
       </section>
-      <section style="padding:4rem 1.5rem; max-width:1200px; margin:0 auto;">
-        <h2 style="text-align:center;">Почему гости возвращаются к нам снова</h2>
-        <div style="margin-top:2rem; display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:1.5rem;">
-          <div class="fade-in-up" style="background:white; padding:1.5rem; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
-            <div style="font-size:2.5rem; margin-bottom:0.8rem;">☕</div>
-            <h3 style="margin:0 0 0.5rem; color:var(--dark);">Лучший кофе в районе</h3>
-            <p style="color:#666; line-height:1.5;">Только свежеобжаренные зёрна и точная настройка помола — чтобы каждый глоток был идеальным.</p>
+
+      <section class="section-features">
+        <h2>Почему гости возвращаются к нам снова</h2>
+        <div class="features-grid">
+          <div class="feature-card fade-in-up">
+            <div class="feature-icon">☕</div>
+            <h3>Лучший кофе в районе</h3>
+            <p>Только свежеобжаренные зёрна и точная настройка помола — чтобы каждый глоток был идеальным.</p>
           </div>
-          <div class="fade-in-up" style="background:white; padding:1.5rem; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
-            <div style="font-size:2.5rem; margin-bottom:0.8rem;">🥐</div>
-            <h3 style="margin:0 0 0.5rem; color:var(--dark);">Свежая выпечка каждый день</h3>
-            <p style="color:#666; line-height:1.5;">Круассаны, маффины и десерты готовим с утра, чтобы они были тёплыми и ароматными.</p>
+          <div class="feature-card fade-in-up">
+            <div class="feature-icon">🥐</div>
+            <h3>Свежая выпечка каждый день</h3>
+            <p>Круассаны, маффины и десерты готовим с утра, чтобы они были тёплыми и ароматными.</p>
           </div>
-          <div class="fade-in-up" style="background:white; padding:1.5rem; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
-            <div style="font-size:2.5rem; margin-bottom:0.8rem;">🏠</div>
-            <h3 style="margin:0 0 0.5rem; color:var(--dark);">Уютная атмосфера</h3>
-            <p style="color:#666; line-height:1.5;">Мягкие кресла, приглушённый свет и спокойная музыка — чтобы забыть про суету.</p>
+          <div class="feature-card fade-in-up">
+            <div class="feature-icon">🏠</div>
+            <h3>Уютная атмосфера</h3>
+            <p>Мягкие кресла, приглушённый свет и спокойная музыка — чтобы забыть про суету.</p>
           </div>
         </div>
       </section>
-      <section style="padding:4rem 1.5rem; background:#f9f7f2; text-align:center;">
+
+      <section class="section-hits">
         <h2>С чего начать?</h2>
-        <p style="max-width:600px; margin:1rem auto; color:#555;">
+        <p>
           Если не знаешь, что попробовать — вот наши хиты, которые заказывают чаще всего:
         </p>
-        <div class="menu-grid" style="justify-content:center; margin-top:1.5rem;">
+        <div class="menu-grid">
           <div class="dish-card fade-in-up">
             <h3>Капучино</h3>
             <p>Классика: эспрессо и молочная пена. Идеально, чтобы проснуться.</p>
@@ -72,21 +75,15 @@
             <span class="dish-price">380 ₽</span>
           </div>
         </div>
-        <a href="menu.html" style="display:inline-block; margin-top:2rem; padding:0.9rem 2rem; background:var(--primary); color:white; text-decoration:none; border-radius:6px; font-weight:bold;">Всё меню →</a>
+        <a href="menu.html" class="btn-primary">Всё меню →</a>
       </section>
     </main>
+
     <footer>
       <p>&copy; 2026 Кафе «Уют». Все права защищены.</p>
       <p>Адрес: г. Москва, ул. Патриаршские пруды, д. 1 • Телефон: +7 (925) 119-90-15</p>
       <p>&copy; ООО "Мама Птица"</p>
     </footer>
-    <script>
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-      }, { threshold: 0.15 });
-      document.querySelectorAll('.fade-in-up').forEach((el) => observer.observe(el));
-    </script>
+    <script src="js/main.js"></script>
   </body>
 </html>
