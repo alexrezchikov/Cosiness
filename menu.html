@@ -6,7 +6,6 @@
     <title>Кофейня Cosiness — Меню</title>
     <link rel="stylesheet" href="css/style.css"/>
     <style>
-      /* ===== Раскрывающиеся категории меню ===== */
       .menu-category {
         margin: 1.5rem 0;
         border-radius: 10px;
@@ -14,7 +13,6 @@
         background: white;
         box-shadow: 0 4px 12px rgba(0,0,0,0.06);
       }
-
       .category-toggle {
         width: 100%;
         display: flex;
@@ -30,39 +28,20 @@
         color: var(--primary);
         transition: background 0.2s;
       }
-
-      .category-toggle:hover {
-        background: #fdf8f2;
-      }
-
-      /* Стрелочка */
+      .category-toggle:hover { background: #fdf8f2; }
       .category-toggle .arrow {
         display: inline-block;
         transition: transform 0.3s ease;
         font-size: 1rem;
         color: var(--primary);
       }
-
-      /* Когда категория открыта — стрелка повёрнута */
-      .menu-category.open .category-toggle .arrow {
-        transform: rotate(180deg);
-      }
-
-      /* Контейнер с содержимым: плавное раскрытие */
+      .menu-category.open .category-toggle .arrow { transform: rotate(180deg); }
       .category-content {
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.4s ease;
       }
-
-      .category-content .menu-grid {
-        padding: 0 1.5rem 1.5rem;
-      }
-
-      /* Когда открыто — max-height задаётся через JS под реальную высоту */
-      .menu-category.open .category-content {
-        /* значение переопределяется скриптом */
-      }
+      .category-content .menu-grid { padding: 0 1.5rem 1.5rem; }
     </style>
   </head>
   <body>
@@ -74,6 +53,8 @@
         <a href="about.html">О нас</a>
         <a href="gallery.html">Галерея</a>
         <a href="contacts.html">Контакты</a>
+        <a href="cart.html">Корзина</a>
+        <a href="profile.html">Профиль</a>
       </nav>
     </header>
 
@@ -88,45 +69,85 @@
         </button>
         <div class="category-content">
           <div class="menu-grid">
-            <div class="dish-card fade-in-up">
+            <div class="dish-card fade-in-up" data-id="espresso" data-name="Эспрессо" data-price="180">
               <h3>Эспрессо</h3>
               <p>Крепкий концентрированный кофе из свежеобжаренных зёрен.</p>
               <span class="dish-price">180 ₽</span>
+              <div class="dish-counter">
+                <button type="button" class="counter-btn minus" aria-label="Убрать">−</button>
+                <span class="counter-value">0</span>
+                <button type="button" class="counter-btn plus" aria-label="Добавить">+</button>
+              </div>
             </div>
-            <div class="dish-card fade-in-up">
+            <div class="dish-card fade-in-up" data-id="americano" data-name="Американо" data-price="220">
               <h3>Американо</h3>
               <p>Эспрессо с горячей водой — мягкий вкус без молока.</p>
               <span class="dish-price">220 ₽</span>
+              <div class="dish-counter">
+                <button type="button" class="counter-btn minus" aria-label="Убрать">−</button>
+                <span class="counter-value">0</span>
+                <button type="button" class="counter-btn plus" aria-label="Добавить">+</button>
+              </div>
             </div>
-            <div class="dish-card fade-in-up">
+            <div class="dish-card fade-in-up" data-id="cappuccino" data-name="Капучино" data-price="320">
               <h3>Капучино</h3>
               <p>Свежий эспрессо и молочная пена — классика на каждый день.</p>
               <span class="dish-price">320 ₽</span>
+              <div class="dish-counter">
+                <button type="button" class="counter-btn minus" aria-label="Убрать">−</button>
+                <span class="counter-value">0</span>
+                <button type="button" class="counter-btn plus" aria-label="Добавить">+</button>
+              </div>
             </div>
-            <div class="dish-card fade-in-up">
+            <div class="dish-card fade-in-up" data-id="latte" data-name="Латте" data-price="350">
               <h3>Латте</h3>
               <p>Нежный молочный напиток с мягким кофейным вкусом.</p>
               <span class="dish-price">350 ₽</span>
+              <div class="dish-counter">
+                <button type="button" class="counter-btn minus" aria-label="Убрать">−</button>
+                <span class="counter-value">0</span>
+                <button type="button" class="counter-btn plus" aria-label="Добавить">+</button>
+              </div>
             </div>
-            <div class="dish-card fade-in-up">
+            <div class="dish-card fade-in-up" data-id="flatwhite" data-name="Флэт уайт" data-price="360">
               <h3>Флэт уайт</h3>
               <p>Двойной эспрессо и тонкий слой молочной пены.</p>
               <span class="dish-price">360 ₽</span>
+              <div class="dish-counter">
+                <button type="button" class="counter-btn minus" aria-label="Убрать">−</button>
+                <span class="counter-value">0</span>
+                <button type="button" class="counter-btn plus" aria-label="Добавить">+</button>
+              </div>
             </div>
-            <div class="dish-card fade-in-up">
+            <div class="dish-card fade-in-up" data-id="raf" data-name="Раф ванильный" data-price="380">
               <h3>Раф ванильный</h3>
               <p>Сливки, эспрессо и ваниль — нежный и сливочный.</p>
               <span class="dish-price">380 ₽</span>
+              <div class="dish-counter">
+                <button type="button" class="counter-btn minus" aria-label="Убрать">−</button>
+                <span class="counter-value">0</span>
+                <button type="button" class="counter-btn plus" aria-label="Добавить">+</button>
+              </div>
             </div>
-            <div class="dish-card fade-in-up">
+            <div class="dish-card fade-in-up" data-id="cocoa" data-name="Какао с маршмеллоу" data-price="300">
               <h3>Какао с маршмеллоу</h3>
               <p>Тёплое какао на молоке с воздушными маршмеллоу.</p>
               <span class="dish-price">300 ₽</span>
+              <div class="dish-counter">
+                <button type="button" class="counter-btn minus" aria-label="Убрать">−</button>
+                <span class="counter-value">0</span>
+                <button type="button" class="counter-btn plus" aria-label="Добавить">+</button>
+              </div>
             </div>
-            <div class="dish-card fade-in-up">
+            <div class="dish-card fade-in-up" data-id="seabuckthorn" data-name="Чай облепиховый" data-price="250">
               <h3>Чай облепиховый</h3>
               <p>Ароматный чай с облепихой, мёдом и апельсином.</p>
               <span class="dish-price">250 ₽</span>
+              <div class="dish-counter">
+                <button type="button" class="counter-btn minus" aria-label="Убрать">−</button>
+                <span class="counter-value">0</span>
+                <button type="button" class="counter-btn plus" aria-label="Добавить">+</button>
+              </div>
             </div>
           </div>
         </div>
@@ -140,45 +161,85 @@
         </button>
         <div class="category-content">
           <div class="menu-grid">
-            <div class="dish-card fade-in-up">
+            <div class="dish-card fade-in-up" data-id="croissant-almond" data-name="Круассан с миндалем" data-price="280">
               <h3>Круассан с миндалем</h3>
               <p>Хрустящий круассан и миндальная начинка — идеальный завтрак.</p>
               <span class="dish-price">280 ₽</span>
+              <div class="dish-counter">
+                <button type="button" class="counter-btn minus" aria-label="Убрать">−</button>
+                <span class="counter-value">0</span>
+                <button type="button" class="counter-btn plus" aria-label="Добавить">+</button>
+              </div>
             </div>
-            <div class="dish-card fade-in-up">
+            <div class="dish-card fade-in-up" data-id="croissant-choc" data-name="Круассан с шоколадом" data-price="290">
               <h3>Круассан с шоколадом</h3>
               <p>Слоёный круассан с тёмным шоколадом внутри.</p>
               <span class="dish-price">290 ₽</span>
+              <div class="dish-counter">
+                <button type="button" class="counter-btn minus" aria-label="Убрать">−</button>
+                <span class="counter-value">0</span>
+                <button type="button" class="counter-btn plus" aria-label="Добавить">+</button>
+              </div>
             </div>
-            <div class="dish-card fade-in-up">
+            <div class="dish-card fade-in-up" data-id="cinnabon" data-name="Синнабон" data-price="260">
               <h3>Синнабон</h3>
               <p>Мягкая булочка с корицей и сливочной глазурью.</p>
               <span class="dish-price">260 ₽</span>
+              <div class="dish-counter">
+                <button type="button" class="counter-btn minus" aria-label="Убрать">−</button>
+                <span class="counter-value">0</span>
+                <button type="button" class="counter-btn plus" aria-label="Добавить">+</button>
+              </div>
             </div>
-            <div class="dish-card fade-in-up">
+            <div class="dish-card fade-in-up" data-id="muffin" data-name="Маффин с черникой" data-price="240">
               <h3>Маффин с черникой</h3>
               <p>Нежный маффин с сочной черникой и хрустящей крошкой.</p>
               <span class="dish-price">240 ₽</span>
+              <div class="dish-counter">
+                <button type="button" class="counter-btn minus" aria-label="Убрать">−</button>
+                <span class="counter-value">0</span>
+                <button type="button" class="counter-btn plus" aria-label="Добавить">+</button>
+              </div>
             </div>
-            <div class="dish-card fade-in-up">
+            <div class="dish-card fade-in-up" data-id="sandwich-turkey" data-name="Сэндвич с индейкой" data-price="420">
               <h3>Сэндвич с индейкой</h3>
               <p>Сочная индейка, свежие овощи и пряный соус на цельнозерновом хлебе.</p>
               <span class="dish-price">420 ₽</span>
+              <div class="dish-counter">
+                <button type="button" class="counter-btn minus" aria-label="Убрать">−</button>
+                <span class="counter-value">0</span>
+                <button type="button" class="counter-btn plus" aria-label="Добавить">+</button>
+              </div>
             </div>
-            <div class="dish-card fade-in-up">
+            <div class="dish-card fade-in-up" data-id="sandwich-salmon" data-name="Сэндвич с лососем" data-price="480">
               <h3>Сэндвич с лососем</h3>
               <p>Слабосолёный лосось, сливочный сыр и укроп на чиабатте.</p>
               <span class="dish-price">480 ₽</span>
+              <div class="dish-counter">
+                <button type="button" class="counter-btn minus" aria-label="Убрать">−</button>
+                <span class="counter-value">0</span>
+                <button type="button" class="counter-btn plus" aria-label="Добавить">+</button>
+              </div>
             </div>
-            <div class="dish-card fade-in-up">
+            <div class="dish-card fade-in-up" data-id="oatmeal" data-name="Овсянка с ягодами" data-price="320">
               <h3>Овсянка с ягодами</h3>
               <p>Овсяная каша на молоке с сезонными ягодами и мёдом.</p>
               <span class="dish-price">320 ₽</span>
+              <div class="dish-counter">
+                <button type="button" class="counter-btn minus" aria-label="Убрать">−</button>
+                <span class="counter-value">0</span>
+                <button type="button" class="counter-btn plus" aria-label="Добавить">+</button>
+              </div>
             </div>
-            <div class="dish-card fade-in-up">
+            <div class="dish-card fade-in-up" data-id="syrniki" data-name="Сырники со сметаной" data-price="390">
               <h3>Сырники со сметаной</h3>
               <p>Пышные сырники из фермерского творога со сметаной и вареньем.</p>
               <span class="dish-price">390 ₽</span>
+              <div class="dish-counter">
+                <button type="button" class="counter-btn minus" aria-label="Убрать">−</button>
+                <span class="counter-value">0</span>
+                <button type="button" class="counter-btn plus" aria-label="Добавить">+</button>
+              </div>
             </div>
           </div>
         </div>
@@ -192,25 +253,45 @@
         </button>
         <div class="category-content">
           <div class="menu-grid">
-            <div class="dish-card fade-in-up">
+            <div class="dish-card fade-in-up" data-id="avocado" data-name="Салат с авокадо" data-price="450">
               <h3>Салат с авокадо</h3>
               <p>Микс салатных листьев, авокадо, томаты черри и заправка на оливковом масле.</p>
               <span class="dish-price">450 ₽</span>
+              <div class="dish-counter">
+                <button type="button" class="counter-btn minus" aria-label="Убрать">−</button>
+                <span class="counter-value">0</span>
+                <button type="button" class="counter-btn plus" aria-label="Добавить">+</button>
+              </div>
             </div>
-            <div class="dish-card fade-in-up">
+            <div class="dish-card fade-in-up" data-id="caesar" data-name="Цезарь с курицей" data-price="490">
               <h3>Цезарь с курицей</h3>
               <p>Романо, курица гриль, пармезан и хрустящие сухарики.</p>
               <span class="dish-price">490 ₽</span>
+              <div class="dish-counter">
+                <button type="button" class="counter-btn minus" aria-label="Убрать">−</button>
+                <span class="counter-value">0</span>
+                <button type="button" class="counter-btn plus" aria-label="Добавить">+</button>
+              </div>
             </div>
-            <div class="dish-card fade-in-up">
+            <div class="dish-card fade-in-up" data-id="greek" data-name="Греческий салат" data-price="430">
               <h3>Греческий салат</h3>
               <p>Огурцы, томаты, фета, маслины и орегано.</p>
               <span class="dish-price">430 ₽</span>
+              <div class="dish-counter">
+                <button type="button" class="counter-btn minus" aria-label="Убрать">−</button>
+                <span class="counter-value">0</span>
+                <button type="button" class="counter-btn plus" aria-label="Добавить">+</button>
+              </div>
             </div>
-            <div class="dish-card fade-in-up">
+            <div class="dish-card fade-in-up" data-id="tuna" data-name="Салат с тунцом" data-price="470">
               <h3>Салат с тунцом</h3>
               <p>Тунец, яйцо, фасоль и лёгкая горчичная заправка.</p>
               <span class="dish-price">470 ₽</span>
+              <div class="dish-counter">
+                <button type="button" class="counter-btn minus" aria-label="Убрать">−</button>
+                <span class="counter-value">0</span>
+                <button type="button" class="counter-btn plus" aria-label="Добавить">+</button>
+              </div>
             </div>
           </div>
         </div>
@@ -224,35 +305,65 @@
         </button>
         <div class="category-content">
           <div class="menu-grid">
-            <div class="dish-card fade-in-up">
+            <div class="dish-card fade-in-up" data-id="cheesecake" data-name="Чизкейк Нью-Йорк" data-price="380">
               <h3>Чизкейк Нью-Йорк</h3>
               <p>Классический чизкейк с ванилью и тонкой корочкой.</p>
               <span class="dish-price">380 ₽</span>
+              <div class="dish-counter">
+                <button type="button" class="counter-btn minus" aria-label="Убрать">−</button>
+                <span class="counter-value">0</span>
+                <button type="button" class="counter-btn plus" aria-label="Добавить">+</button>
+              </div>
             </div>
-            <div class="dish-card fade-in-up">
+            <div class="dish-card fade-in-up" data-id="tiramisu" data-name="Тирамису" data-price="420">
               <h3>Тирамису</h3>
               <p>Итальянский десерт с маскарпоне, эспрессо и какао.</p>
               <span class="dish-price">420 ₽</span>
+              <div class="dish-counter">
+                <button type="button" class="counter-btn minus" aria-label="Убрать">−</button>
+                <span class="counter-value">0</span>
+                <button type="button" class="counter-btn plus" aria-label="Добавить">+</button>
+              </div>
             </div>
-            <div class="dish-card fade-in-up">
+            <div class="dish-card fade-in-up" data-id="brownie" data-name="Брауни" data-price="350">
               <h3>Брауни</h3>
               <p>Тёплый шоколадный брауни с шариком ванильного мороженого.</p>
               <span class="dish-price">350 ₽</span>
+              <div class="dish-counter">
+                <button type="button" class="counter-btn minus" aria-label="Убрать">−</button>
+                <span class="counter-value">0</span>
+                <button type="button" class="counter-btn plus" aria-label="Добавить">+</button>
+              </div>
             </div>
-            <div class="dish-card fade-in-up">
+            <div class="dish-card fade-in-up" data-id="medovik" data-name="Медовик" data-price="330">
               <h3>Медовик</h3>
               <p>Домашний медовик со сметанным кремом.</p>
               <span class="dish-price">330 ₽</span>
+              <div class="dish-counter">
+                <button type="button" class="counter-btn minus" aria-label="Убрать">−</button>
+                <span class="counter-value">0</span>
+                <button type="button" class="counter-btn plus" aria-label="Добавить">+</button>
+              </div>
             </div>
-            <div class="dish-card fade-in-up">
+            <div class="dish-card fade-in-up" data-id="pannacotta" data-name="Панна котта" data-price="360">
               <h3>Панна котта</h3>
               <p>Нежный сливочный десерт с ягодным соусом.</p>
               <span class="dish-price">360 ₽</span>
+              <div class="dish-counter">
+                <button type="button" class="counter-btn minus" aria-label="Убрать">−</button>
+                <span class="counter-value">0</span>
+                <button type="button" class="counter-btn plus" aria-label="Добавить">+</button>
+              </div>
             </div>
-            <div class="dish-card fade-in-up">
+            <div class="dish-card fade-in-up" data-id="icecream" data-name="Мороженое (3 шарика)" data-price="280">
               <h3>Мороженое (3 шарика)</h3>
               <p>Ваниль, шоколад и клубника — на выбор.</p>
               <span class="dish-price">280 ₽</span>
+              <div class="dish-counter">
+                <button type="button" class="counter-btn minus" aria-label="Убрать">−</button>
+                <span class="counter-value">0</span>
+                <button type="button" class="counter-btn plus" aria-label="Добавить">+</button>
+              </div>
             </div>
           </div>
         </div>
@@ -271,17 +382,12 @@
           const category = btn.closest('.menu-category');
           const content = category.querySelector('.category-content');
           const isOpen = category.classList.contains('open');
-
           if (isOpen) {
-            // Закрываем: сначала фиксируем текущую высоту, потом обнуляем
             content.style.maxHeight = content.scrollHeight + 'px';
-            requestAnimationFrame(() => {
-              content.style.maxHeight = '0px';
-            });
+            requestAnimationFrame(() => { content.style.maxHeight = '0px'; });
             category.classList.remove('open');
             btn.setAttribute('aria-expanded', 'false');
           } else {
-            // Открываем: задаём реальную высоту содержимого
             category.classList.add('open');
             content.style.maxHeight = content.scrollHeight + 'px';
             btn.setAttribute('aria-expanded', 'true');
@@ -289,14 +395,13 @@
         });
       });
 
-      // Если окно изменило размер — пересчитываем высоту открытых категорий
       window.addEventListener('resize', () => {
         document.querySelectorAll('.menu-category.open .category-content').forEach((content) => {
           content.style.maxHeight = content.scrollHeight + 'px';
         });
       });
 
-      // ===== Анимация появления карточек =====
+      // ===== Анимация появления =====
       const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -304,6 +409,83 @@
         });
       }, observerOptions);
       document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+
+      // ===== Корзина =====
+      const CART_KEY = 'cosiness_cart';
+
+      function getCart() {
+        try { return JSON.parse(localStorage.getItem(CART_KEY)) || {}; }
+        catch (e) { return {}; }
+      }
+
+      function saveCart(cart) {
+        localStorage.setItem(CART_KEY, JSON.stringify(cart));
+        updateCartBadge();
+      }
+
+      function updateCartBadge() {
+        const cart = getCart();
+        const totalQty = Object.values(cart).reduce((s, i) => s + i.qty, 0);
+        const link = document.querySelector('nav a[href="cart.html"]');
+        if (!link) return;
+        link.classList.toggle('cart-filled', totalQty > 0);
+        let badge = link.querySelector('.cart-badge');
+        if (totalQty > 0) {
+          if (!badge) {
+            badge = document.createElement('span');
+            badge.className = 'cart-badge';
+            link.appendChild(badge);
+          }
+          badge.textContent = totalQty;
+        } else if (badge) {
+          badge.remove();
+        }
+      }
+
+      function syncCounters() {
+        const cart = getCart();
+        document.querySelectorAll('.dish-card[data-id]').forEach((card) => {
+          const id = card.dataset.id;
+          const qty = cart[id] ? cart[id].qty : 0;
+          const valueEl = card.querySelector('.counter-value');
+          if (valueEl) valueEl.textContent = qty;
+          card.classList.toggle('in-cart', qty > 0);
+        });
+      }
+
+      document.querySelectorAll('.dish-card[data-id]').forEach((card) => {
+        const minus = card.querySelector('.counter-btn.minus');
+        const plus = card.querySelector('.counter-btn.plus');
+        const valueEl = card.querySelector('.counter-value');
+
+        plus.addEventListener('click', () => {
+          const cart = getCart();
+          const id = card.dataset.id;
+          if (cart[id]) cart[id].qty++;
+          else cart[id] = {
+            name: card.dataset.name,
+            price: Number(card.dataset.price),
+            qty: 1
+          };
+          saveCart(cart);
+          valueEl.textContent = cart[id].qty;
+          card.classList.add('in-cart');
+        });
+
+        minus.addEventListener('click', () => {
+          const cart = getCart();
+          const id = card.dataset.id;
+          if (!cart[id]) return;
+          cart[id].qty--;
+          if (cart[id].qty <= 0) delete cart[id];
+          saveCart(cart);
+          valueEl.textContent = cart[id] ? cart[id].qty : 0;
+          if (!cart[id]) card.classList.remove('in-cart');
+        });
+      });
+
+      syncCounters();
+      updateCartBadge();
     </script>
   </body>
 </html>
