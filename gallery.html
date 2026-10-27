@@ -3,12 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Кофейня Cosiness — Галерея</title>
+    <title>Cosiness | Gallery</title>
     <link rel="stylesheet" href="css/style.css"/>
   </head>
   <body>
     <header>
-      <div class="logo">☕ Кафе «Уют»</div>
+      <a href="index.html" class="logo logo-img" aria-label="На главную">
+        <img src="images/сoffee_bean.png">
+      </a>
       <nav>
         <a href="index.html">Главная</a>
         <a href="menu.html">Меню</a>
@@ -19,7 +21,6 @@
         <a href="profile.html">Профиль</a>
       </nav>
     </header>
-
     <main>
       <h2>Галерея нашего кафе</h2>
       <div class="gallery-grid">
@@ -27,37 +28,31 @@
           <img src="images/interier.jpg" alt="Уютный интерьер кафе">
           <figcaption>Уютный интерьер и мягкие кресла</figcaption>
         </figure>
-
         <figure class="photo-card fade-in-up">
           <img src="images/coffe.jpg" alt="Ароматный кофе">
           <figcaption>Ароматный капучино</figcaption>
         </figure>
-
         <figure class="photo-card fade-in-up">
           <img src="images/motherbossbird.png" alt="Команда кафе">
           <figcaption>Наша дружная команда</figcaption>
         </figure>
-
         <figure class="photo-card fade-in-up">
           <img src="images/desert.jpg" alt="Вкусные десерты">
           <figcaption>Десерты от нашего кондитера</figcaption>
         </figure>
       </div>
     </main>
-
     <footer>
       <p>&copy; 2026 Кафе «Уют». Все права защищены.</p>
       <p>Адрес: г. Москва, ул. Патриаршские пруды, д. 1 • Телефон: +7 (925) 119-90-15</p>
       <p>&copy; ООО "Мама Птица"</p>
     </footer>
-
     <script>
       const observerOptions = {
         root: null,
         rootMargin: '0px',
         threshold: 0.1
       };
-
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -65,7 +60,6 @@
           }
         });
       }, observerOptions);
-
       document.querySelectorAll('.fade-in-up').forEach(el => {
         observer.observe(el);
       });

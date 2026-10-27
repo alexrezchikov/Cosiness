@@ -3,12 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Кофейня Cosiness — Контакты</title>
+    <title>Cosiness | Contacts</title>
     <link rel="stylesheet" href="css/style.css"/>
+    <style>
+      .toast {
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        background: #4caf50;
+        color: white;
+        padding: 0.9rem 1.4rem;
+        border-radius: 8px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+        font-size: 0.95rem;
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        z-index: 1000;
+      }
+      .toast.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
   </head>
   <body>
     <header>
-      <div class="logo">☕ Кафе «Уют»</div>
+      <a href="index.html" class="logo logo-img" aria-label="На главную">
+        <img src="images/сoffee_bean.png">
+      </a>
       <nav>
         <a href="index.html">Главная</a>
         <a href="menu.html">Меню</a>
@@ -19,28 +43,40 @@
         <a href="profile.html">Профиль</a>
       </nav>
     </header>
-
     <main>
       <h2>Свяжитесь с нами</h2>
-      <form>
+      <form id="contactForm">
         <label for="name">Ваше имя</label>
         <input type="text" id="name" name="name" required placeholder="Андрей Бурим">
-
         <label for="phone">Телефон</label>
         <input type="tel" id="phone" name="phone" required placeholder="+7 (999) 000-00-00">
-
         <label for="message">Сообщение</label>
         <textarea id="message" name="message" rows="4" placeholder="Хочу забронировать столик..."></textarea>
-
         <button type="submit">Отправить</button>
       </form>
-
       <section style="margin-top:3rem; text-align:center;">
-        <h3>Как нас найти</h3>
-        <p style="margin:0.5rem 0;">📍 г. Москва, ул. Патриаршские пруды, д. 1</p>
-        <p style="margin:0.5rem 0;">📞 +7 (915) 119-90-15
+        <p>&copy; 2026 Кафе «Уют». Все права защищены.</p>
+        <p>Адрес: г. Москва, ул. Патриаршские пруды, д. 1 • Телефон: +7 (925) 119-90-15</p>
         <p>&copy; ООО "Мама Птица"</p>
       </section>
     </main>
+    <div class="toast" id="toast">Сообщение отправлено</div>
+    <script>
+      const form = document.getElementById('contactForm');
+      const toast = document.getElementById('toast');
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add('show');
+        clearTimeout(showToast._timer);
+        showToast._timer = setTimeout(() => {
+          toast.classList.remove('show');
+        }, 2500);
+      }
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        showToast('Сообщение отправлено');
+        form.reset();
+      });
+    </script>
   </body>
 </html>

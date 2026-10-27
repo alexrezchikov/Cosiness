@@ -3,12 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Кофейня Cosiness — Профиль</title>
+    <title>Cosiness | Profile</title>
     <link rel="stylesheet" href="css/style.css"/>
+    <style>
+      .toast {
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        background: #4caf50;
+        color: white;
+        padding: 0.9rem 1.4rem;
+        border-radius: 8px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+        font-size: 0.95rem;
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        z-index: 1000;
+      }
+      .toast.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
   </head>
   <body>
     <header>
-      <div class="logo">☕ Кафе «Уют»</div>
+      <a href="index.html" class="logo logo-img" aria-label="На главную">
+        <img src="images/сoffee_bean.png" alt="Кафе «Уют»">
+      </a>
       <nav>
         <a href="index.html">Главная</a>
         <a href="menu.html">Меню</a>
@@ -19,75 +43,48 @@
         <a href="profile.html" class="active">Профиль</a>
       </nav>
     </header>
-
     <main>
       <h2>Личный кабинет</h2>
-
       <div class="profile-layout">
-        <!-- Карточка пользователя -->
         <aside class="profile-card fade-in-up">
-          <div class="avatar">А</div>
-          <h3>Андрей Бурмалда</h3>
-          <p class="profile-email">mellstroy@example.com</p>
+          <div class="avatar" id="avatar">А</div>
+          <h3 id="displayName">Андрей Бурмалда</h3>
+          <p class="profile-email" id="displayEmail">mellstroy@example.com</p>
           <p class="profile-role">Постоянный гость · с 2022 года</p>
           <div class="profile-stats">
-            <div><strong>12</strong><span>заказов</span></div>
+            <div><strong id="ordersCount">0</strong><span>заказов</span></div>
             <div><strong>340</strong><span>бонусов</span></div>
             <div><strong>5%</strong><span>скидка</span></div>
           </div>
         </aside>
-
-        <!-- Форма редактирования -->
         <section class="profile-form fade-in-up">
           <h3>Данные профиля</h3>
-          <form>
+          <form id="profileForm">
             <label for="name">Имя</label>
             <input id="name" type="text" value="Андрей" />
-
             <label for="surname">Фамилия</label>
             <input id="surname" type="text" value="Бурмалда" />
-
             <label for="email">Email</label>
             <input id="email" type="email" value="mellstroy@example.com" />
-
             <label for="phone">Телефон</label>
             <input id="phone" type="tel" value="+7 (925) 119-90-15" />
-
             <label for="birthday">Дата рождения</label>
             <input id="birthday" type="date" value="1995-06-14" />
-
             <button type="submit">Сохранить изменения</button>
           </form>
         </section>
       </div>
-
-      <!-- История заказов -->
       <section class="profile-orders fade-in-up">
         <h3>Последние заказы</h3>
-        <div class="order-row">
-          <span>№ 1042 · 12 мая 2026</span>
-          <span>Капучино, круассан с миндалем</span>
-          <span class="dish-price">600 ₽</span>
-        </div>
-        <div class="order-row">
-          <span>№ 1038 · 5 мая 2026</span>
-          <span>Латте, чизкейк Нью-Йорк</span>
-          <span class="dish-price">730 ₽</span>
-        </div>
-        <div class="order-row">
-          <span>№ 1031 · 28 апреля 2026</span>
-          <span>Флэт уайт, сырники</span>
-          <span class="dish-price">750 ₽</span>
-        </div>
+        <div id="ordersList"></div>
       </section>
     </main>
-
     <footer>
       <p>&copy; 2026 Кафе «Уют». Все права защищены.</p>
       <p>Адрес: г. Москва, ул. Патриаршские пруды, д. 1 • Телефон: +7 (925) 119-90-15</p>
       <p>&copy; ООО "Мама Птица"</p>
     </footer>
-
+    <div class="toast" id="toast">Данные сохранены</div>
     <script>
       const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
       const observer = new IntersectionObserver((entries) => {
@@ -96,6 +93,98 @@
         });
       }, observerOptions);
       document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+
+      const PROFILE_KEY = 'cosiness_profile';
+      const ORDERS_KEY = 'cosiness_orders';
+      const form = document.getElementById('profileForm');
+      const fields = {
+        name: document.getElementById('name'),
+        surname: document.getElementById('surname'),
+        email: document.getElementById('email'),
+        phone: document.getElementById('phone'),
+        birthday: document.getElementById('birthday')
+      };
+      const displayName = document.getElementById('displayName');
+      const displayEmail = document.getElementById('displayEmail');
+      const avatar = document.getElementById('avatar');
+      const toast = document.getElementById('toast');
+      const ordersList = document.getElementById('ordersList');
+      const ordersCount = document.getElementById('ordersCount');
+
+      function loadProfile() {
+        try {
+          const saved = JSON.parse(localStorage.getItem(PROFILE_KEY));
+          if (!saved) return;
+          Object.keys(fields).forEach((key) => {
+            if (saved[key] !== undefined) fields[key].value = saved[key];
+          });
+          updateCard();
+        } catch (e) {}
+      }
+
+      function updateCard() {
+        const name = fields.name.value.trim() || 'Гость';
+        const surname = fields.surname.value.trim();
+        const email = fields.email.value.trim();
+        displayName.textContent = (name + ' ' + surname).trim();
+        displayEmail.textContent = email || '—';
+        avatar.textContent = name.charAt(0).toUpperCase();
+      }
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add('show');
+        clearTimeout(showToast._timer);
+        showToast._timer = setTimeout(() => {
+          toast.classList.remove('show');
+        }, 2500);
+      }
+
+      function formatDate(iso) {
+        const d = new Date(iso);
+        const months = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+        return d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+      }
+
+      function renderOrders() {
+        let orders = [];
+        try {
+          orders = JSON.parse(localStorage.getItem(ORDERS_KEY)) || [];
+        } catch (e) { orders = []; }
+
+        ordersCount.textContent = orders.length;
+
+        if (orders.length === 0) {
+          ordersList.innerHTML = '<p class="orders-empty">Пока нет заказов. Загляните в меню — и история появится здесь.</p>';
+          return;
+        }
+
+        ordersList.innerHTML = orders.map((o) => {
+          const itemsText = o.items.map((i) => i.name + (i.qty > 1 ? ' ×' + i.qty : '')).join(', ');
+          const shortId = '№ ' + o.id.slice(-6);
+          return (
+            '<div class="order-row">' +
+              '<span>' + shortId + ' · ' + formatDate(o.date) + '</span>' +
+              '<span>' + itemsText + '</span>' +
+              '<span class="dish-price">' + o.total + ' ₽</span>' +
+            '</div>'
+          );
+        }).join('');
+      }
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const data = {};
+        Object.keys(fields).forEach((key) => {
+          data[key] = fields[key].value.trim();
+        });
+        localStorage.setItem(PROFILE_KEY, JSON.stringify(data));
+        updateCard();
+        showToast('Данные сохранены');
+      });
+
+      loadProfile();
+      renderOrders();
     </script>
   </body>
 </html>
