@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Кофейня Cosiness — Профиль</title>
+    <link rel="stylesheet" href="css/style.css"/>
+  </head>
+  <body>
+    <header>
+      <div class="logo">☕ Кафе «Уют»</div>
+      <nav>
+        <a href="index.html">Главная</a>
+        <a href="menu.html">Меню</a>
+        <a href="about.html">О нас</a>
+        <a href="gallery.html">Галерея</a>
+        <a href="contacts.html">Контакты</a>
+        <a href="cart.html">Корзина</a>
+        <a href="profile.html" class="active">Профиль</a>
+      </nav>
+    </header>
+
+    <main>
+      <h2>Личный кабинет</h2>
+
+      <div class="profile-layout">
+        <!-- Карточка пользователя -->
+        <aside class="profile-card fade-in-up">
+          <div class="avatar">А</div>
+          <h3>Анна Иванова</h3>
+          <p class="profile-email">anna@example.com</p>
+          <p class="profile-role">Постоянный гость · с 2022 года</p>
+          <div class="profile-stats">
+            <div><strong>12</strong><span>заказов</span></div>
+            <div><strong>340</strong><span>бонусов</span></div>
+            <div><strong>5%</strong><span>скидка</span></div>
+          </div>
+        </aside>
+
+        <!-- Форма редактирования -->
+        <section class="profile-form fade-in-up">
+          <h3>Данные профиля</h3>
+          <form>
+            <label for="name">Имя</label>
+            <input id="name" type="text" value="Анна" />
+
+            <label for="surname">Фамилия</label>
+            <input id="surname" type="text" value="Иванова" />
+
+            <label for="email">Email</label>
+            <input id="email" type="email" value="anna@example.com" />
+
+            <label for="phone">Телефон</label>
+            <input id="phone" type="tel" value="+7 (925) 119-90-15" />
+
+            <label for="birthday">Дата рождения</label>
+            <input id="birthday" type="date" value="1995-06-14" />
+
+            <button type="submit">Сохранить изменения</button>
+          </form>
+        </section>
+      </div>
+
+      <!-- История заказов -->
+      <section class="profile-orders fade-in-up">
+        <h3>Последние заказы</h3>
+        <div class="order-row">
+          <span>№ 1042 · 12 мая 2026</span>
+          <span>Капучино, круассан с миндалем</span>
+          <span class="dish-price">600 ₽</span>
+        </div>
+        <div class="order-row">
+          <span>№ 1038 · 5 мая 2026</span>
+          <span>Латте, чизкейк Нью-Йорк</span>
+          <span class="dish-price">730 ₽</span>
+        </div>
+        <div class="order-row">
+          <span>№ 1031 · 28 апреля 2026</span>
+          <span>Флэт уайт, сырники</span>
+          <span class="dish-price">750 ₽</span>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Кафе «Уют». Все права защищены.</p>
+      <p>Адрес: г. Москва, ул. Патриаршские пруды, д. 1 • Телефон: +7 (925) 119-90-15</p>
+      <p>&copy; ООО "Мама Птица"</p>
+    </footer>
+
+    <script>
+      const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      }, observerOptions);
+      document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+    </script>
+  </body>
+</html>
