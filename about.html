@@ -3,43 +3,193 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Кофейня Cosiness — О нас</title>
-    <link rel="stylesheet" href="css/style.css"/>
+    <title>Кафе «Уют» — О нас</title>
+    <style>
+      :root {
+        --primary: #d4a373;
+        --dark: #2e2e2e;
+        --light: #f9f7f2;
+        --glass: rgba(255, 255, 255, 0.94);
+        --marker: #d4a373;
+      }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      body {
+        font-family: 'Georgia', 'Times New Roman', serif;
+        line-height: 1.7;
+        color: var(--dark);
+        background: linear-gradient(180deg, #fbf8f4 0%, #f4f0e8 100%);
+        min-height: 100vh;
+      }
+
+      header {
+        padding: 2rem 1rem;
+        text-align: center;
+      }
+
+      .logo {
+        display: inline-block;
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: var(--primary);
+        letter-spacing: 2px;
+        position: relative;
+      }
+
+      .logo::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: rgba(212, 163, 115, 0.2);
+        animation: pulse 3s infinite;
+        pointer-events: none;
+      }
+
+      @keyframes pulse {
+        0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.3; }
+        50% { opacity: 0.5; }
+        100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+      }
+
+      main {
+        max-width: 750px;
+        margin: 0 auto;
+        padding: 0 1.5rem 4rem;
+      }
+
+      h1 {
+        font-size: 3.2rem;
+        line-height: 1.1;
+        color: var(--dark);
+        text-align: center;
+        margin-bottom: 1.8rem;
+        font-weight: 600;
+      }
+
+      .content-wrapper {
+        background: var(--glass);
+        padding: 3rem 2.5rem;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 1.6rem;
+        color: var(--primary);
+        margin-bottom: 2.4rem;
+        position: relative;
+        display: inline-block;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .section-title::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background: var(--primary);
+        margin: 12px auto 0;
+      }
+
+      ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      li {
+        position: relative;
+        padding-left: 28px;
+        margin-bottom: 1rem;
+        color: #555;
+        line-height: 1.6;
+      }
+
+      li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 6px;
+        width: 10px;
+        height: 10px;
+        background: var(--marker);
+        border-radius: 50%;
+      }
+
+      .cta-box {
+        margin-top: 3rem;
+        text-align: center;
+      }
+
+      .big-btn {
+        display: inline-block;
+        padding: 1.2rem 3rem;
+        background: var(--primary);
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 15px rgba(212, 163, 115, 0.4);
+      }
+
+      .big-btn:hover {
+        background: #b88b5b;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(212, 163, 115, 0.6);
+      }
+
+      footer {
+        text-align: center;
+        padding: 2.5rem;
+        color: #888;
+        font-size: 0.9rem;
+        border-top: 1px solid #e0e0e0;
+      }
+
+      @media (max-width: 600px) {
+        h1 { font-size: 2.4rem; }
+        .content-wrapper { padding: 2rem 1.5rem; }
+        .logo { font-size: 1.6rem; }
+        .big-btn { padding: 1rem 2rem; width: 100%; max-width: 300px; }
+      }
+    </style>
   </head>
   <body>
+
     <header>
       <div class="logo">☕ Кафе «Уют»</div>
-      <nav>
-        <a href="index.html">Главная</a>
-        <a href="menu.html">Меню</a>
-        <a href="about.html" class="active">О нас</a>
-        <a href="gallery.html">Галерея</a>
-        <a href="contacts.html">Контакты</a>
-        <a href="cart.html">Корзина</a>
-        <a href="profile.html">Профиль</a>
-      </nav>
     </header>
 
     <main>
-      <h2>О нас</h2>
-      <article style="max-width:700px; margin:0 auto; text-align:center;">
-        <p>
-          Мы создали «Уют», чтобы каждый гость мог почувствовать себя как дома. 
-          Используем свежие продукты, готовим с душой и всегда рады видеть вас снова.
-        </p>
-        <hr style="border:0; border-top:1px solid #eee; margin:2rem 0;">
-        <h3 style="margin-top:1.5rem;">Наши ценности</h3>
-        <ul style="list-style:none; padding-left:0; margin-top:1rem;">
-          <li style="padding:0.5rem 0; color:#555;">Свежесть: все блюда готовим в день заказа.</li>
-          <li style="padding:0.5rem 0; color:#555;">Уют: комфортная атмосфера и внимательный сервис.</li>
-          <li style="padding:0.5rem 0; color:#555;">Честность: цены на витрине и в чеке — одинаковые.</li>
+      <h1>Здесь время течёт медленнее</h1>
+
+      <div class="content-wrapper">
+        <div class="section-title">Как мы готовим кофе</div>
+        <ul>
+          <li>Мы работаем только со свежеобжаренным зерном. Каждую партию мы пробуем сами, прежде чем она попадает в эспрессо-машину.</li>
+          <li>Бариста — это не просто профессия, это призвание. Наши ребята учатся годами, чтобы понимать зерно, воду и температуру.</li>
+          <li>Для нас кофе — это диалог. Если вы не знаете, что выбрать, мы просто спросим: «Что вы любите сегодня?» и подберём то, что откликнется.</li>
         </ul>
-      </article>
+
+        <div class="cta-box">
+          <a href="menu.html" class="big-btn">Посмотреть наше меню</a>
+        </div>
+      </div>
     </main>
 
     <footer>
-      <p>&copy; 2024 Кафе «Уют». Все права защищены.</p>
-      <p>Адрес: г. Москва, ул. Примерная, д. 1 • Телефон: +7 (495) 000-00-00</p>
+      <p>&copy; 2026 Кафе «Уют». Все права защищены.</p>
+      <p>Адрес: г. Москва, ул. Патриаршие пруды, д. 1 • Телефон: +7 (925) 119-90-15</p>
+      <p>&copy; ООО «Мама Птица»</p>
     </footer>
   </body>
 </html>
