@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Кофейня Cosiness — Меню</title>
+    <title>Cosiness | Menu</title>
     <link rel="stylesheet" href="css/style.css"/>
     <style>
       .menu-category {
@@ -46,7 +46,9 @@
   </head>
   <body>
     <header>
-      <div class="logo">☕ Кафе «Уют»</div>
+      <a href="index.html" class="logo logo-img" aria-label="На главную">
+        <img src="images/сoffee_bean.png">
+      </a>
       <nav>
         <a href="index.html">Главная</a>
         <a href="menu.html" class="active">Меню</a>
@@ -57,11 +59,8 @@
         <a href="profile.html">Профиль</a>
       </nav>
     </header>
-
     <main>
       <h2>Наше меню</h2>
-
-      <!-- КОФЕ И НАПИТКИ -->
       <div class="menu-category">
         <button class="category-toggle" type="button" aria-expanded="false">
           <span>Кофе и напитки</span>
@@ -152,8 +151,6 @@
           </div>
         </div>
       </div>
-
-      <!-- ВЫПЕЧКА И ЗАВТРАКИ -->
       <div class="menu-category">
         <button class="category-toggle" type="button" aria-expanded="false">
           <span>Выпечка и завтраки</span>
@@ -244,8 +241,6 @@
           </div>
         </div>
       </div>
-
-      <!-- САЛАТЫ -->
       <div class="menu-category">
         <button class="category-toggle" type="button" aria-expanded="false">
           <span>Салаты</span>
@@ -296,8 +291,6 @@
           </div>
         </div>
       </div>
-
-      <!-- ДЕСЕРТЫ -->
       <div class="menu-category">
         <button class="category-toggle" type="button" aria-expanded="false">
           <span>Десерты</span>
@@ -369,15 +362,12 @@
         </div>
       </div>
     </main>
-
     <footer>
       <p>&copy; 2026 Кафе «Уют». Все права защищены.</p>
       <p>Адрес: г. Москва, ул. Патриаршские пруды, д. 1 • Телефон: +7 (925) 119-90-15</p>
       <p>&copy; ООО "Мама Птица"</p>
     </footer>
-
     <script>
-      // ===== Раскрывающиеся категории =====
       document.querySelectorAll('.category-toggle').forEach((btn) => {
         btn.addEventListener('click', () => {
           const category = btn.closest('.menu-category');
@@ -395,14 +385,11 @@
           }
         });
       });
-
       window.addEventListener('resize', () => {
         document.querySelectorAll('.menu-category.open .category-content').forEach((content) => {
           content.style.maxHeight = content.scrollHeight + 'px';
         });
       });
-
-      // ===== Анимация появления =====
       const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -410,20 +397,15 @@
         });
       }, observerOptions);
       document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
-
-      // ===== Корзина =====
       const CART_KEY = 'cosiness_cart';
-
       function getCart() {
         try { return JSON.parse(localStorage.getItem(CART_KEY)) || {}; }
         catch (e) { return {}; }
       }
-
       function saveCart(cart) {
         localStorage.setItem(CART_KEY, JSON.stringify(cart));
         updateCartBadge();
       }
-
       function updateCartBadge() {
         const cart = getCart();
         const totalQty = Object.values(cart).reduce((s, i) => s + i.qty, 0);
@@ -442,7 +424,6 @@
           badge.remove();
         }
       }
-
       function syncCounters() {
         const cart = getCart();
         document.querySelectorAll('.dish-card[data-id]').forEach((card) => {
@@ -453,12 +434,10 @@
           card.classList.toggle('in-cart', qty > 0);
         });
       }
-
       document.querySelectorAll('.dish-card[data-id]').forEach((card) => {
         const minus = card.querySelector('.counter-btn.minus');
         const plus = card.querySelector('.counter-btn.plus');
         const valueEl = card.querySelector('.counter-value');
-
         plus.addEventListener('click', () => {
           const cart = getCart();
           const id = card.dataset.id;
@@ -472,7 +451,6 @@
           valueEl.textContent = cart[id].qty;
           card.classList.add('in-cart');
         });
-
         minus.addEventListener('click', () => {
           const cart = getCart();
           const id = card.dataset.id;
@@ -484,7 +462,6 @@
           if (!cart[id]) card.classList.remove('in-cart');
         });
       });
-
       syncCounters();
       updateCartBadge();
     </script>

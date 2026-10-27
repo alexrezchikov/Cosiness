@@ -3,12 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Кофейня Cosiness — Главная</title>
+    <title>Cosiness | Main</title>
     <link rel="stylesheet" href="css/style.css"/>
   </head>
   <body>
     <header>
-      <div class="logo">☕ Кафе «Уют»</div>
+      <a href="index.html" class="logo logo-img" aria-label="На главную">
+        <img src="images/сoffee_bean.png">
+      </a>
       <nav>
         <a href="index.html" class="active">Главная</a>
         <a href="menu.html">Меню</a>
@@ -19,9 +21,7 @@
         <a href="profile.html">Профиль</a>
       </nav>
     </header>
-
     <main>
-      <!-- Большой баннер (фон задаётся в CSS — класс .hero) -->
       <section class="hero fade-in-up">
         <h1>Тепло, вкус и уют в каждом глотке</h1>
         <p>
@@ -30,8 +30,6 @@
         </p>
         <a href="menu.html">Выбрать любимое блюдо</a>
       </section>
-
-      <!-- Почему выбирают нас -->
       <section style="padding:4rem 1.5rem; max-width:1200px; margin:0 auto;">
         <h2 style="text-align:center;">Почему гости возвращаются к нам снова</h2>
         <div style="margin-top:2rem; display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:1.5rem;">
@@ -52,8 +50,6 @@
           </div>
         </div>
       </section>
-
-      <!-- Призыв к действию + мини-меню -->
       <section style="padding:4rem 1.5rem; background:#f9f7f2; text-align:center;">
         <h2>С чего начать?</h2>
         <p style="max-width:600px; margin:1rem auto; color:#555;">
@@ -79,15 +75,12 @@
         <a href="menu.html" style="display:inline-block; margin-top:2rem; padding:0.9rem 2rem; background:var(--primary); color:white; text-decoration:none; border-radius:6px; font-weight:bold;">Всё меню →</a>
       </section>
     </main>
-
     <footer>
       <p>&copy; 2026 Кафе «Уют». Все права защищены.</p>
       <p>Адрес: г. Москва, ул. Патриаршские пруды, д. 1 • Телефон: +7 (925) 119-90-15</p>
       <p>&copy; ООО "Мама Птица"</p>
     </footer>
-
     <script>
-      // Плавное появление элементов при скролле
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) entry.target.classList.add('visible');
