@@ -413,7 +413,6 @@ nav a[href="cart.html"].cart-hidden { display: none; }
   font-size: 0.95rem;
   padding: 0.5rem 0;
 }
-/* ===== Секции главной страницы ===== */
 .section-features {
   padding: 4rem 1.5rem;
   max-width: 1200px;
@@ -449,8 +448,6 @@ nav a[href="cart.html"].cart-hidden { display: none; }
   color: #666;
   line-height: 1.5;
 }
-
-/* ===== Секция "С чего начать" ===== */
 .section-hits {
   padding: 4rem 1.5rem;
   background: #f9f7f2;
@@ -478,7 +475,6 @@ nav a[href="cart.html"].cart-hidden { display: none; }
   border-radius: 6px;
   font-weight: bold;
 }
-/* ===== Аккордеон категорий меню ===== */
 .menu-category {
   margin: 1.5rem 0;
   border-radius: 10px;
@@ -515,7 +511,6 @@ nav a[href="cart.html"].cart-hidden { display: none; }
   transition: max-height 0.4s ease;
 }
 .category-content .menu-grid { padding: 0 1.5rem 1.5rem; }
-/* ===== Страница About ===== */
 .about-page body,
 body.about-page {
   font-family: 'Georgia', 'Times New Roman', serif;
@@ -614,7 +609,6 @@ body.about-page {
   .about-page .content-wrapper { padding: 2rem 1.5rem; }
   .about-page .big-btn { padding: 1rem 2rem; width: 100%; max-width: 300px; }
 }
-/* ===== Toast (уведомление) ===== */
 .toast {
   position: fixed;
   top: 80px;
@@ -635,7 +629,6 @@ body.about-page {
   opacity: 1;
   transform: translateY(0);
 }
-/* ===== Кнопка "Перейти в меню" в пустой корзине ===== */
 .cart-empty-btn {
   display: inline-block;
   width: auto;
