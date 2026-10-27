@@ -3,8 +3,67 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Кафе «Уют» — Меню</title>
+    <title>Кофейня Cosiness — Меню</title>
     <link rel="stylesheet" href="css/style.css"/>
+    <style>
+      /* ===== Раскрывающиеся категории меню ===== */
+      .menu-category {
+        margin: 1.5rem 0;
+        border-radius: 10px;
+        overflow: hidden;
+        background: white;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      }
+
+      .category-toggle {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.1rem 1.5rem;
+        background: white;
+        border: none;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--primary);
+        transition: background 0.2s;
+      }
+
+      .category-toggle:hover {
+        background: #fdf8f2;
+      }
+
+      /* Стрелочка */
+      .category-toggle .arrow {
+        display: inline-block;
+        transition: transform 0.3s ease;
+        font-size: 1rem;
+        color: var(--primary);
+      }
+
+      /* Когда категория открыта — стрелка повёрнута */
+      .menu-category.open .category-toggle .arrow {
+        transform: rotate(180deg);
+      }
+
+      /* Контейнер с содержимым: плавное раскрытие */
+      .category-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+      }
+
+      .category-content .menu-grid {
+        padding: 0 1.5rem 1.5rem;
+      }
+
+      /* Когда открыто — max-height задаётся через JS под реальную высоту */
+      .menu-category.open .category-content {
+        /* значение переопределяется скриптом */
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -20,46 +79,224 @@
 
     <main>
       <h2>Наше меню</h2>
-      <div class="menu-grid">
-        <div class="dish-card fade-in-up">
-          <h3>Капучино</h3>
-          <p>Свежий эспрессо и молочная пена — классика на каждый день.</p>
-          <span class="dish-price">320 ₽</span>
+
+      <!-- КОФЕ И НАПИТКИ -->
+      <div class="menu-category">
+        <button class="category-toggle" type="button" aria-expanded="false">
+          <span>Кофе и напитки</span>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="category-content">
+          <div class="menu-grid">
+            <div class="dish-card fade-in-up">
+              <h3>Эспрессо</h3>
+              <p>Крепкий концентрированный кофе из свежеобжаренных зёрен.</p>
+              <span class="dish-price">180 ₽</span>
+            </div>
+            <div class="dish-card fade-in-up">
+              <h3>Американо</h3>
+              <p>Эспрессо с горячей водой — мягкий вкус без молока.</p>
+              <span class="dish-price">220 ₽</span>
+            </div>
+            <div class="dish-card fade-in-up">
+              <h3>Капучино</h3>
+              <p>Свежий эспрессо и молочная пена — классика на каждый день.</p>
+              <span class="dish-price">320 ₽</span>
+            </div>
+            <div class="dish-card fade-in-up">
+              <h3>Латте</h3>
+              <p>Нежный молочный напиток с мягким кофейным вкусом.</p>
+              <span class="dish-price">350 ₽</span>
+            </div>
+            <div class="dish-card fade-in-up">
+              <h3>Флэт уайт</h3>
+              <p>Двойной эспрессо и тонкий слой молочной пены.</p>
+              <span class="dish-price">360 ₽</span>
+            </div>
+            <div class="dish-card fade-in-up">
+              <h3>Раф ванильный</h3>
+              <p>Сливки, эспрессо и ваниль — нежный и сливочный.</p>
+              <span class="dish-price">380 ₽</span>
+            </div>
+            <div class="dish-card fade-in-up">
+              <h3>Какао с маршмеллоу</h3>
+              <p>Тёплое какао на молоке с воздушными маршмеллоу.</p>
+              <span class="dish-price">300 ₽</span>
+            </div>
+            <div class="dish-card fade-in-up">
+              <h3>Чай облепиховый</h3>
+              <p>Ароматный чай с облепихой, мёдом и апельсином.</p>
+              <span class="dish-price">250 ₽</span>
+            </div>
+          </div>
         </div>
-        <div class="dish-card fade-in-up">
-          <h3>Латте</h3>
-          <p>Нежный молочный напиток с мягким кофейным вкусом.</p>
-          <span class="dish-price">350 ₽</span>
+      </div>
+
+      <!-- ВЫПЕЧКА И ЗАВТРАКИ -->
+      <div class="menu-category">
+        <button class="category-toggle" type="button" aria-expanded="false">
+          <span>Выпечка и завтраки</span>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="category-content">
+          <div class="menu-grid">
+            <div class="dish-card fade-in-up">
+              <h3>Круассан с миндалем</h3>
+              <p>Хрустящий круассан и миндальная начинка — идеальный завтрак.</p>
+              <span class="dish-price">280 ₽</span>
+            </div>
+            <div class="dish-card fade-in-up">
+              <h3>Круассан с шоколадом</h3>
+              <p>Слоёный круассан с тёмным шоколадом внутри.</p>
+              <span class="dish-price">290 ₽</span>
+            </div>
+            <div class="dish-card fade-in-up">
+              <h3>Синнабон</h3>
+              <p>Мягкая булочка с корицей и сливочной глазурью.</p>
+              <span class="dish-price">260 ₽</span>
+            </div>
+            <div class="dish-card fade-in-up">
+              <h3>Маффин с черникой</h3>
+              <p>Нежный маффин с сочной черникой и хрустящей крошкой.</p>
+              <span class="dish-price">240 ₽</span>
+            </div>
+            <div class="dish-card fade-in-up">
+              <h3>Сэндвич с индейкой</h3>
+              <p>Сочная индейка, свежие овощи и пряный соус на цельнозерновом хлебе.</p>
+              <span class="dish-price">420 ₽</span>
+            </div>
+            <div class="dish-card fade-in-up">
+              <h3>Сэндвич с лососем</h3>
+              <p>Слабосолёный лосось, сливочный сыр и укроп на чиабатте.</p>
+              <span class="dish-price">480 ₽</span>
+            </div>
+            <div class="dish-card fade-in-up">
+              <h3>Овсянка с ягодами</h3>
+              <p>Овсяная каша на молоке с сезонными ягодами и мёдом.</p>
+              <span class="dish-price">320 ₽</span>
+            </div>
+            <div class="dish-card fade-in-up">
+              <h3>Сырники со сметаной</h3>
+              <p>Пышные сырники из фермерского творога со сметаной и вареньем.</p>
+              <span class="dish-price">390 ₽</span>
+            </div>
+          </div>
         </div>
-        <div class="dish-card fade-in-up">
-          <h3>Круассан с миндалем</h3>
-          <p>Хрустящий круассан и миндальная начинка — идеальный завтрак.</p>
-          <span class="dish-price">280 ₽</span>
+      </div>
+
+      <!-- САЛАТЫ -->
+      <div class="menu-category">
+        <button class="category-toggle" type="button" aria-expanded="false">
+          <span>Салаты</span>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="category-content">
+          <div class="menu-grid">
+            <div class="dish-card fade-in-up">
+              <h3>Салат с авокадо</h3>
+              <p>Микс салатных листьев, авокадо, томаты черри и заправка на оливковом масле.</p>
+              <span class="dish-price">450 ₽</span>
+            </div>
+            <div class="dish-card fade-in-up">
+              <h3>Цезарь с курицей</h3>
+              <p>Романо, курица гриль, пармезан и хрустящие сухарики.</p>
+              <span class="dish-price">490 ₽</span>
+            </div>
+            <div class="dish-card fade-in-up">
+              <h3>Греческий салат</h3>
+              <p>Огурцы, томаты, фета, маслины и орегано.</p>
+              <span class="dish-price">430 ₽</span>
+            </div>
+            <div class="dish-card fade-in-up">
+              <h3>Салат с тунцом</h3>
+              <p>Тунец, яйцо, фасоль и лёгкая горчичная заправка.</p>
+              <span class="dish-price">470 ₽</span>
+            </div>
+          </div>
         </div>
-        <div class="dish-card fade-in-up">
-          <h3>Сэндвич с индейкой</h3>
-          <p>Сочная индейка, свежие овощи и пряный соус на цельнозерновом хлебе.</p>
-          <span class="dish-price">420 ₽</span>
-        </div>
-        <div class="dish-card fade-in-up">
-          <h3>Чизкейк Нью-Йорк</h3>
-          <p>Классический чизкейк с ванилью и тонкой корочкой.</p>
-          <span class="dish-price">380 ₽</span>
-        </div>
-        <div class="dish-card fade-in-up">
-          <h3>Салат с авокадо</h3>
-          <p>Микс салатных листьев, авокадо, томаты черри и заправка на оливковом масле.</p>
-          <span class="dish-price">450 ₽</span>
+      </div>
+
+      <!-- ДЕСЕРТЫ -->
+      <div class="menu-category">
+        <button class="category-toggle" type="button" aria-expanded="false">
+          <span>Десерты</span>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="category-content">
+          <div class="menu-grid">
+            <div class="dish-card fade-in-up">
+              <h3>Чизкейк Нью-Йорк</h3>
+              <p>Классический чизкейк с ванилью и тонкой корочкой.</p>
+              <span class="dish-price">380 ₽</span>
+            </div>
+            <div class="dish-card fade-in-up">
+              <h3>Тирамису</h3>
+              <p>Итальянский десерт с маскарпоне, эспрессо и какао.</p>
+              <span class="dish-price">420 ₽</span>
+            </div>
+            <div class="dish-card fade-in-up">
+              <h3>Брауни</h3>
+              <p>Тёплый шоколадный брауни с шариком ванильного мороженого.</p>
+              <span class="dish-price">350 ₽</span>
+            </div>
+            <div class="dish-card fade-in-up">
+              <h3>Медовик</h3>
+              <p>Домашний медовик со сметанным кремом.</p>
+              <span class="dish-price">330 ₽</span>
+            </div>
+            <div class="dish-card fade-in-up">
+              <h3>Панна котта</h3>
+              <p>Нежный сливочный десерт с ягодным соусом.</p>
+              <span class="dish-price">360 ₽</span>
+            </div>
+            <div class="dish-card fade-in-up">
+              <h3>Мороженое (3 шарика)</h3>
+              <p>Ваниль, шоколад и клубника — на выбор.</p>
+              <span class="dish-price">280 ₽</span>
+            </div>
+          </div>
         </div>
       </div>
     </main>
 
     <footer>
-      <p>&copy; 2024 Кафе «Уют». Все права защищены.</p>
-      <p>Адрес: г. Москва, ул. Примерная, д. 1 • Телефон: +7 (495) 000-00-00</p>
+      <p>&copy; 2026 Кафе «Уют». Все права защищены.</p>
+      <p>Адрес: г. Москва, ул. Примерная, д. 67 • Телефон: +7 (495) 000-00-00</p>
     </footer>
 
     <script>
+      // ===== Раскрывающиеся категории =====
+      document.querySelectorAll('.category-toggle').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const category = btn.closest('.menu-category');
+          const content = category.querySelector('.category-content');
+          const isOpen = category.classList.contains('open');
+
+          if (isOpen) {
+            // Закрываем: сначала фиксируем текущую высоту, потом обнуляем
+            content.style.maxHeight = content.scrollHeight + 'px';
+            requestAnimationFrame(() => {
+              content.style.maxHeight = '0px';
+            });
+            category.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            // Открываем: задаём реальную высоту содержимого
+            category.classList.add('open');
+            content.style.maxHeight = content.scrollHeight + 'px';
+            btn.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+
+      // Если окно изменило размер — пересчитываем высоту открытых категорий
+      window.addEventListener('resize', () => {
+        document.querySelectorAll('.menu-category.open .category-content').forEach((content) => {
+          content.style.maxHeight = content.scrollHeight + 'px';
+        });
+      });
+
+      // ===== Анимация появления карточек =====
       const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
