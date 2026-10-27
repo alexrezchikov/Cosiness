@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Кафе «Уют» — Меню</title>
+    <link rel="stylesheet" href="css/style.css"/>
+  </head>
+  <body>
+    <header>
+      <div class="logo">☕ Кафе «Уют»</div>
+      <nav>
+        <a href="index.html">Главная</a>
+        <a href="menu.html" class="active">Меню</a>
+        <a href="about.html">О нас</a>
+        <a href="gallery.html">Галерея</a>
+        <a href="contacts.html">Контакты</a>
+      </nav>
+    </header>
+
+    <main>
+      <h2>Наше меню</h2>
+      <div class="menu-grid">
+        <div class="dish-card fade-in-up">
+          <h3>Капучино</h3>
+          <p>Свежий эспрессо и молочная пена — классика на каждый день.</p>
+          <span class="dish-price">320 ₽</span>
+        </div>
+        <div class="dish-card fade-in-up">
+          <h3>Латте</h3>
+          <p>Нежный молочный напиток с мягким кофейным вкусом.</p>
+          <span class="dish-price">350 ₽</span>
+        </div>
+        <div class="dish-card fade-in-up">
+          <h3>Круассан с миндалем</h3>
+          <p>Хрустящий круассан и миндальная начинка — идеальный завтрак.</p>
+          <span class="dish-price">280 ₽</span>
+        </div>
+        <div class="dish-card fade-in-up">
+          <h3>Сэндвич с индейкой</h3>
+          <p>Сочная индейка, свежие овощи и пряный соус на цельнозерновом хлебе.</p>
+          <span class="dish-price">420 ₽</span>
+        </div>
+        <div class="dish-card fade-in-up">
+          <h3>Чизкейк Нью-Йорк</h3>
+          <p>Классический чизкейк с ванилью и тонкой корочкой.</p>
+          <span class="dish-price">380 ₽</span>
+        </div>
+        <div class="dish-card fade-in-up">
+          <h3>Салат с авокадо</h3>
+          <p>Микс салатных листьев, авокадо, томаты черри и заправка на оливковом масле.</p>
+          <span class="dish-price">450 ₽</span>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Кафе «Уют». Все права защищены.</p>
+      <p>Адрес: г. Москва, ул. Примерная, д. 1 • Телефон: +7 (495) 000-00-00</p>
+    </footer>
+
+    <script>
+      const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      }, observerOptions);
+      document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+    </script>
+  </body>
+</html>

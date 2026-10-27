@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Кафе «Уют» — Контакты</title>
+    <link rel="stylesheet" href="css/style.css"/>
+  </head>
+  <body>
+    <header>
+      <div class="logo">☕ Кафе «Уют»</div>
+      <nav>
+        <a href="index.html">Главная</a>
+        <a href="menu.html">Меню</a>
+        <a href="about.html">О нас</a>
+        <a href="gallery.html">Галерея</a>
+        <a href="contacts.html" class="active">Контакты</a>
+      </nav>
+    </header>
+
+    <main>
+      <h2>Свяжитесь с нами</h2>
+      <form>
+        <label for="name">Ваше имя</label>
+        <input type="text" id="name" name="name" required placeholder="Иван Иванов">
+
+        <label for="phone">Телефон</label>
+        <input type="tel" id="phone" name="phone" required placeholder="+7 (999) 000-00-00">
+
+        <label for="message">Сообщение</label>
+        <textarea id="message" name="message" rows="4" placeholder="Хочу забронировать столик..."></textarea>
+
+        <button type="submit">Отправить</button>
+      </form>
+
+      <section style="margin-top:3rem; text-align:center;">
+        <h3>Как нас найти</h3>
+        <p style="margin:0.5rem 0;">📍 г. Москва, ул. Примерная, д. 1</p>
+        <p style="margin:0.5rem 0;">📞 +7 (495) 000-00-00</

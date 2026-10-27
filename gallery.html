@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Кафе «Уют» — Галерея</title>
+    <link rel="stylesheet" href="css/style.css"/>
+  </head>
+  <body>
+    <header>
+      <div class="logo">☕ Кафе «Уют»</div>
+      <nav>
+        <a href="index.html">Главная</a>
+        <a href="menu.html">Меню</a>
+        <a href="about.html">О нас</a>
+        <a href="gallery.html" class="active">Галерея</a>
+        <a href="contacts.html">Контакты</a>
+      </nav>
+    </header>
+
+    <main>
+      <h2>Галерея</h2>
+      <div class="gallery-grid">
+        <figure class="photo-card fade-in-up">
+          <img src="https://via.placeholder.com/400x300?text=Интерьер" alt="Интерьер кафе" style="width:100%; height:220px; object-fit:cover; border-radius:6px;">
+          <figcaption style="margin-top:0.7rem; color:#666; font-size:0.9rem;">Уютный интерьер и мягкие кресла</figcaption>
+        </figure>
+        <figure class="photo-card fade-in-up">
+          <img src="https://via.placeholder.com/400x300?text=Кофе" alt="Кофе" style="width:100%; height:220px; object-fit:cover; border-radius:6px;">
+          <figcaption style="margin-top:0.7rem; color:#666; font-size:0.9rem;">Ароматный капучино с рисунком</figcaption>
+        </figure>
+        <figure class="photo-card fade-in-up">
+          <img src="https://via.placeholder.com/400x300?text=Десерты" alt="Десерты" style="width:100%; height:220px; object-fit:cover; border-radius:6px;">
+          <figcaption style="margin-top:0.7rem; color:#666; font-size:0.9rem;">Десерты от нашего кондитера</figcaption>
+        </figure>
+        <figure class="photo-card fade-in-up">
+          <img src="https://via.placeholder.com/400x300?text=Команда" alt="Команда" style="width:100%; height:220px; object-fit:cover; border-radius:6px;">
+          <figcaption style="margin-top:0.7rem; color:#666; font-size:0.9rem;">Наша дружная команда</figcaption>
+        </figure>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Кафе «Уют». Все права защищены.</p>
+      <p>Адрес: г. Москва, ул. Примерная, д. 1 • Телефон: +7 (495) 000-00-00</p>
+    </footer>
+
+    <script>
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.fade-in-up').forEach(el => {
+        observer.observe(el);
+      });
+    </script>
+  </body>
+</html>
