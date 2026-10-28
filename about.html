@@ -3,33 +3,86 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Cosiness | About</title>
+    <title>Cosiness | О нас</title>
     <link rel="stylesheet" href="css/style.css"/>
   </head>
   <body class="about-page">
+    <!-- Шапка: слева логотип, справа меню -->
     <header>
       <a href="index.html" class="logo logo-img" aria-label="На главную">
         <img src="images/coffee_bean.png" alt="Логотип кафе Уют">
       </a>
+      <nav>
+        <a href="index.html">Главная</a>
+        <a href="menu.html">Меню</a>
+        <a href="about.html" class="active">О нас</a>
+        <a href="gallery.html">Галерея</a>
+        <a href="contacts.html">Контакты</a>
+        <a href="cart.html">Корзина</a>
+        <a href="profile.html">Профиль</a>
+      </nav>
     </header>
+
     <main>
-      <h1>Здесь время течёт медленнее</h1>
-      <div class="content-wrapper">
+      <!-- Главный заголовок -->
+      <h1 class="fade-in-up">Здесь время течёт медленнее</h1>
+
+      <div class="content-wrapper fade-in-up">
+        
+        <!-- Блок «Как мы готовим кофе» -->
         <div class="section-title">Как мы готовим кофе</div>
         <ul>
           <li>Мы работаем только со свежеобжаренным зерном. Каждую партию мы пробуем сами, прежде чем она попадает в эспрессо-машину.</li>
           <li>Бариста — это не просто профессия, это призвание. Наши ребята учатся годами, чтобы понимать зерно, воду и температуру.</li>
           <li>Для нас кофе — это диалог. Если вы не знаете, что выбрать, мы просто спросим: «Что вы любите сегодня?» и подберём то, что откликнется.</li>
         </ul>
-        <div class="cta-box">
+
+        <!-- Разделитель -->
+        <div style="height: 2rem;"></div>
+
+        <!-- Карточки с преимуществами -->
+        <h2 class="fade-in-up" style="text-align: center; margin-bottom: 1.5rem;">Почему гости возвращаются к нам</h2>
+        <div class="features-grid">
+          <div class="feature-card fade-in-up">
+            <div class="feature-icon">☕</div>
+            <h3>Свежеобжаренное зерно</h3>
+            <p>Только проверенные обжарщики и контроль каждой партии.</p>
+          </div>
+          <div class="feature-card fade-in-up">
+            <div class="feature-icon">👨‍🍳</div>
+            <h3>Бариста-эксперты</h3>
+            <p>Каждый напиток — это результат опыта и любви к делу.</p>
+          </div>
+          <div class="feature-card fade-in-up">
+            <div class="feature-icon">💬</div>
+            <h3>Персональный подход</h3>
+            <p>Мы не просто принимаем заказ — мы помогаем найти ваш идеальный вкус.</p>
+          </div>
+        </div>
+
+        <!-- Блок про атмосферу и команду -->
+        <div style="margin-top: 3rem;"></div>
+        <h2 class="fade-in-up" style="text-align: center;">Наша атмосфера</h2>
+        <p class="fade-in-up" style="color: #555; line-height: 1.7;">
+          Мы специально не делаем громких объявлений и не включаем телевизор: здесь хочется слышать себя и собеседника. Мягкие кресла, приглушённый свет и спокойная музыка — чтобы забыть про суету.
+        </p>
+        <p class="fade-in-up" style="color: #555; line-height: 1.7; margin-top: 1rem;">
+          От бариста до уборщицы — каждый человек здесь важен. Мы не любим слово «персонал», мы говорим «команда». И именно поэтому гости чувствуют, что о них заботятся.
+        </p>
+
+        <!-- Кнопка-призыв к действию -->
+        <div class="cta-box fade-in-up">
           <a href="menu.html" class="big-btn">Посмотреть наше меню</a>
         </div>
       </div>
     </main>
+
     <footer>
       <p>&copy; 2026 Кафе «Уют». Все права защищены.</p>
       <p>Адрес: г. Москва, ул. Патриаршие пруды, д. 1 • Телефон: +7 (925) 119-90-15</p>
       <p>&copy; ООО «Мама Птица»</p>
     </footer>
+
+    <script src="js/main.js"></script>
   </body>
 </html>

@@ -519,13 +519,16 @@ body.about-page {
   min-height: 100vh;
 }
 .about-page header {
-  padding: 2rem 1rem;
-  text-align: left;
-  position: static;
-  background: transparent;
-  box-shadow: none;
-  backdrop-filter: none;
-  display: block;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 .about-page main {
   max-width: 750px;
