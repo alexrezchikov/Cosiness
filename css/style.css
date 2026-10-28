@@ -638,3 +638,11 @@ body.about-page {
   padding: 0.8rem 2rem;
   text-decoration: none;
 }
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+main {
+  flex: 1;
+}
