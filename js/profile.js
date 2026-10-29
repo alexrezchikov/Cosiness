@@ -1,6 +1,7 @@
 // profile.html — данные профиля и история заказов
 const PROFILE_KEY = 'cosiness_profile';
 const ORDERS_KEY = 'cosiness_orders';
+const AVATAR_KEY = 'cosiness_avatar';
 
 const form = document.getElementById('profileForm');
 const fields = {
@@ -13,6 +14,7 @@ const fields = {
 const displayName = document.getElementById('displayName');
 const displayEmail = document.getElementById('displayEmail');
 const avatar = document.getElementById('avatar');
+const avatarInput = document.getElementById('avatarInput');
 const toast = document.getElementById('toast');
 const ordersList = document.getElementById('ordersList');
 const ordersCount = document.getElementById('ordersCount');
@@ -28,13 +30,22 @@ function loadProfile() {
   } catch (e) {}
 }
 
+function renderAvatar() {
+  const saved = localStorage.getItem(AVATAR_KEY);
+  if (saved) {
+    avatar.innerHTML = '<img src="' + saved + '" alt="Фото профиля">';
+  } else {
+    avatar.textContent = (fields.name.value.trim() || 'Г').charAt(0).toUpperCase();
+  }
+}
+
 function updateCard() {
   const name = fields.name.value.trim() || 'Гость';
   const surname = fields.surname.value.trim();
   const email = fields.email.value.trim();
   displayName.textContent = (name + ' ' + surname).trim();
   displayEmail.textContent = email || '—';
-  avatar.textContent = name.charAt(0).toUpperCase();
+  renderAvatar();
 }
 
 function showToast(message) {
@@ -89,6 +100,27 @@ form.addEventListener('submit', (e) => {
   showToast('Данные сохранены');
 });
 
+// Загрузка фото профиля
+avatarInput.addEventListener('change', () => {
+  const file = avatarInput.files[0];
+  if (!file) return;
+  if (!file.type.startsWith('image/')) {
+    showToast('Выберите изображение');
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      localStorage.setItem(AVATAR_KEY, reader.result);
+      renderAvatar();
+      showToast('Фото обновлено');
+    } catch (e) {
+      showToast('Файл слишком большой');
+    }
+  };
+  reader.readAsDataURL(file);
+});
+
 // Анимация появления
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -101,3 +133,4 @@ document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
 // Старт
 loadProfile();
 renderOrders();
+renderAvatar();
